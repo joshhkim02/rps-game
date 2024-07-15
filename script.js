@@ -30,3 +30,23 @@ function getHumanChoice() {
 }
 let playerChoice = getHumanChoice();
 console.log(playerChoice);
+
+function playRound(humanChoice, computerChoice) {
+  if (humanChoice === 0 && computerChoice === 1) {
+    console.log("lose");
+  } else if (humanChoice === 0 && computerChoice === 2) {
+    console.log("win");
+  } else if (humanChoice === 1 && computerChoice === 0) {
+    console.log("win");
+  } else if (humanChoice === 1 && computerChoice === 2) {
+    console.log("lose");
+  } else if (humanChoice === 2 && computerChoice === 0) {
+    console.log("lose");
+  } else if (humanChoice === 2 && computerChoice === 1) {
+    console.log("win");
+  } else {
+    console.log("tie");
+  }
+}
+
+playRound(playerChoice, compChoice);
