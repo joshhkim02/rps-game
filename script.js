@@ -16,3 +16,17 @@ function getComputerChoice() {
 }
 let compChoice = getComputerChoice();
 console.log(compChoice);
+
+function getHumanChoice() {
+  let choice = parseInt(prompt("0 = Rock, 1 = Paper, 2 = Scissors"));
+  if (choice === 0) {
+    console.log("Player: Rock");
+  } else if (choice === 1) {
+    console.log("Player: Paper");
+  } else if (choice === 2) {
+    console.log("Player: Scissors");
+  }
+  return choice;
+}
+let playerChoice = getHumanChoice();
+console.log(playerChoice);
