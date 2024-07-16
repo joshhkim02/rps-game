@@ -1,8 +1,5 @@
 "use strict";
 
-let humanScore = 0;
-let computerScore = 0;
-
 function getComputerChoice() {
   let choice = Math.floor(Math.random() * 3);
   if (choice === 0) {
@@ -14,8 +11,6 @@ function getComputerChoice() {
   }
   return choice;
 }
-let compChoice = getComputerChoice();
-console.log(compChoice);
 
 function getHumanChoice() {
   let choice = parseInt(prompt("0 = Rock, 1 = Paper, 2 = Scissors"));
@@ -28,25 +23,42 @@ function getHumanChoice() {
   }
   return choice;
 }
-let playerChoice = getHumanChoice();
-console.log(playerChoice);
 
-function playRound(humanChoice, computerChoice) {
-  if (humanChoice === 0 && computerChoice === 1) {
-    console.log("lose");
-  } else if (humanChoice === 0 && computerChoice === 2) {
-    console.log("win");
-  } else if (humanChoice === 1 && computerChoice === 0) {
-    console.log("win");
-  } else if (humanChoice === 1 && computerChoice === 2) {
-    console.log("lose");
-  } else if (humanChoice === 2 && computerChoice === 0) {
-    console.log("lose");
-  } else if (humanChoice === 2 && computerChoice === 1) {
-    console.log("win");
-  } else {
-    console.log("tie");
+function playGame() {
+  let humanScore = 0;
+  let computerScore = 0;
+
+  function playRound(humanChoice, computerChoice) {
+    if (humanChoice === 0 && computerChoice === 1) {
+      console.log("You lose! Rock doesn't beat paper.");
+      computerScore++;
+    } else if (humanChoice === 0 && computerChoice === 2) {
+      console.log("You win! Rock beats scissors.");
+      humanScore++;
+    } else if (humanChoice === 1 && computerChoice === 0) {
+      console.log("You win! Paper beats rock.");
+      humanScore++;
+    } else if (humanChoice === 1 && computerChoice === 2) {
+      console.log("You lose! Paper doesn't beat scissors.");
+      computerScore++;
+    } else if (humanChoice === 2 && computerChoice === 0) {
+      console.log("You lose! Scissors doesn't beat rock.");
+      computerScore++;
+    } else if (humanChoice === 2 && computerChoice === 1) {
+      console.log("You win! Scissors beats paper.");
+      humanScore++;
+    } else {
+      console.log("It's a tie!");
+    }
   }
+
+  for (let i = 0; i <= 4; i++) {
+    let compChoice = getComputerChoice();
+    let playerChoice = getHumanChoice();
+    playRound(playerChoice, compChoice);
+  }
+  console.log(`Player score: ${humanScore}`);
+  console.log(`Computer score: ${computerScore}`);
 }
 
-playRound(playerChoice, compChoice);
+playGame();
